@@ -62,6 +62,14 @@ class Grade extends StatelessWidget {
                   fontSize: 28,
                   fontWeight: FontWeight.bold),
             ),
+            Text(
+              'BBANTO',
+              style: TextStyle(
+                  color: Colors.white,
+                  letterSpacing: 2.0,
+                  fontSize: 28,
+                  fontWeight: FontWeight.bold),
+            ),
             SizedBox(
               height: 30,
             ),
