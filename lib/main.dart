@@ -47,6 +47,14 @@ class MyPage extends StatelessWidget {
               currentAccountPicture: CircleAvatar(
                 backgroundImage: AssetImage('assets/1.jpg'),
               ),
+              otherAccountsPictures: [
+                CircleAvatar(
+                  backgroundImage: AssetImage('assets/2.jpg'),
+                ),
+                // CircleAvatar(
+                //   backgroundImage: AssetImage('assets/2.jpg'),
+                // ),
+              ],
               //accountName,accountEmail -> required default
               accountName: Text('GGAM'),
               accountEmail: Text('123@naver.com'),
@@ -60,7 +68,40 @@ class MyPage extends StatelessWidget {
                   bottomRight: Radius.circular(40),
                 ),
               ),
-            )
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.home,
+                color: Colors.grey[850],
+              ),
+              title: Text('Home'),
+              onTap: () {
+                print('Home is clicked');
+              },
+              trailing: Icon(Icons.add),
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.settings,
+                color: Colors.grey[850],
+              ),
+              title: Text('settings'),
+              onTap: () {
+                print('settings is clicked');
+              },
+              trailing: Icon(Icons.add),
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.question_answer,
+                color: Colors.grey[850],
+              ),
+              title: Text('Q & A'),
+              onTap: () {
+                print('Q & A is clicked');
+              },
+              trailing: Icon(Icons.add),
+            ),
           ],
         ),
       ),
