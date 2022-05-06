@@ -25,12 +25,6 @@ class MyPage extends StatelessWidget {
         centerTitle: true,
         elevation: 0,
         // leading -> 아이콘 버튼이나 간단한 위젯을 왼쪽에 배치할 때 사용
-        leading: IconButton(
-          icon: Icon(Icons.menu),
-          onPressed: () {
-            print('menu button is clicked');
-          },
-        ),
         // actions -> 복수의 아이콘 버튼 등을 오른쪽에 배치할 때 사용
         actions: [
           IconButton(
@@ -44,6 +38,31 @@ class MyPage extends StatelessWidget {
               },
               icon: Icon(Icons.search))
         ],
+      ),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            UserAccountsDrawerHeader(
+              currentAccountPicture: CircleAvatar(
+                backgroundImage: AssetImage('assets/1.jpg'),
+              ),
+              //accountName,accountEmail -> required default
+              accountName: Text('GGAM'),
+              accountEmail: Text('123@naver.com'),
+              onDetailsPressed: () {
+                print('arrow is clicked');
+              },
+              decoration: BoxDecoration(
+                color: Colors.red[200],
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(40),
+                  bottomRight: Radius.circular(40),
+                ),
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
