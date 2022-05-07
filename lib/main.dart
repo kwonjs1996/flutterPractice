@@ -5,6 +5,7 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
   @override
+  //BuildContext
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Appbar',
@@ -38,6 +39,24 @@ class MyPage extends StatelessWidget {
               },
               icon: Icon(Icons.search))
         ],
+      ),
+      body: Builder(
+        builder: (BuildContext ctx) {
+          return Center(
+            child: FlatButton(
+              child: Text(
+                'Show me',
+                style: TextStyle(color: Colors.white),
+              ),
+              color: Colors.red,
+              onPressed: () {
+                Scaffold.of(ctx).showSnackBar(SnackBar(
+                  content: Text('Hello'),
+                ));
+              },
+            ),
+          );
+        },
       ),
       drawer: Drawer(
         child: ListView(
