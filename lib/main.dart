@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 void main() => runApp(MyApp());
 
@@ -22,25 +23,18 @@ class MyPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Appbar icon menu'),
+        title: Text('Toast message'),
         centerTitle: true,
-        elevation: 0,
-        // leading -> 아이콘 버튼이나 간단한 위젯을 왼쪽에 배치할 때 사용
-        // actions -> 복수의 아이콘 버튼 등을 오른쪽에 배치할 때 사용
-        actions: [
-          IconButton(
-              onPressed: () {
-                print('shopping_cart button is clicked');
-              },
-              icon: Icon(Icons.shopping_cart)),
-          IconButton(
-              onPressed: () {
-                print('search button is clicked');
-              },
-              icon: Icon(Icons.search))
-        ],
       ),
-      body: MySnackBar(),
+      body: Center(
+        child: FlatButton(
+          onPressed: () {
+            flutterToast();
+          },
+          child: Text('Toast'),
+          color: Colors.blue,
+        ),
+      ),
       drawer: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
@@ -134,4 +128,14 @@ class MySnackBar extends StatelessWidget {
       ),
     );
   }
+}
+
+void flutterToast() {
+  Fluttertoast.showToast(
+      msg: 'Flutter',
+      gravity: ToastGravity.BOTTOM,
+      backgroundColor: Colors.redAccent,
+      fontSize: 20,
+      textColor: Colors.white,
+      toastLength: Toast.LENGTH_SHORT);
 }
