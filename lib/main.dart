@@ -38,84 +38,89 @@ class _LogInState extends State<LogIn> {
       ),
       //키보드가 바디영역을 침범 할 때 자동으로 스크롤을 해주는 역할
       body: Builder(builder: (context) {
-        return SingleChildScrollView(
-          child: Column(
-            children: [
-              Padding(padding: EdgeInsets.only(top: 50)),
-              Center(
-                child: Image(
-                  image: AssetImage('assets/chef.gif'),
-                  width: 170,
-                  height: 190,
+        return GestureDetector(
+          onTap: () {
+            FocusScope.of(context).unfocus();
+          },
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                Padding(padding: EdgeInsets.only(top: 50)),
+                Center(
+                  child: Image(
+                    image: AssetImage('assets/chef.gif'),
+                    width: 170,
+                    height: 190,
+                  ),
                 ),
-              ),
-              Form(
-                child: Theme(
-                  data: ThemeData(
-                    primaryColor: Colors.teal,
-                    inputDecorationTheme: InputDecorationTheme(
-                      labelStyle: TextStyle(
-                        color: Colors.teal,
-                        fontSize: 15,
+                Form(
+                  child: Theme(
+                    data: ThemeData(
+                      primaryColor: Colors.teal,
+                      inputDecorationTheme: InputDecorationTheme(
+                        labelStyle: TextStyle(
+                          color: Colors.teal,
+                          fontSize: 15,
+                        ),
+                      ),
+                    ),
+                    child: Container(
+                      padding: EdgeInsets.all(40),
+                      child: Column(
+                        children: [
+                          TextField(
+                            controller: controller,
+                            decoration:
+                                InputDecoration(labelText: 'Enter "dice"'),
+                            keyboardType: TextInputType.emailAddress,
+                          ),
+                          TextField(
+                            controller: controller2,
+                            decoration:
+                                InputDecoration(labelText: 'Enter Password'),
+                            keyboardType: TextInputType.text,
+                            obscureText: true,
+                          ),
+                          SizedBox(
+                            height: 40,
+                          ),
+                          ButtonTheme(
+                            minWidth: 100,
+                            height: 50,
+                            child: RaisedButton(
+                              onPressed: () {
+                                if (controller.text == 'dice' &&
+                                    controller2.text == '1234') {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (BuildContext context) =>
+                                              Dice()));
+                                } else if (controller.text == 'dice' &&
+                                    controller2.text != '1234') {
+                                  showSnackBar2(context);
+                                } else if (controller.text != 'dice' &&
+                                    controller2.text == '1234') {
+                                  showSnackBar3(context);
+                                } else {
+                                  showSnackBar(context);
+                                }
+                              },
+                              color: Colors.orangeAccent,
+                              child: Icon(
+                                Icons.arrow_forward,
+                                color: Colors.white,
+                                size: 35,
+                              ),
+                            ),
+                          )
+                        ],
                       ),
                     ),
                   ),
-                  child: Container(
-                    padding: EdgeInsets.all(40),
-                    child: Column(
-                      children: [
-                        TextField(
-                          controller: controller,
-                          decoration:
-                              InputDecoration(labelText: 'Enter "dice"'),
-                          keyboardType: TextInputType.emailAddress,
-                        ),
-                        TextField(
-                          controller: controller2,
-                          decoration:
-                              InputDecoration(labelText: 'Enter Password'),
-                          keyboardType: TextInputType.text,
-                          obscureText: true,
-                        ),
-                        SizedBox(
-                          height: 40,
-                        ),
-                        ButtonTheme(
-                          minWidth: 100,
-                          height: 50,
-                          child: RaisedButton(
-                            onPressed: () {
-                              if (controller.text == 'dice' &&
-                                  controller2.text == '1234') {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (BuildContext context) =>
-                                            Dice()));
-                              } else if (controller.text == 'dice' &&
-                                  controller2.text != '1234') {
-                                showSnackBar2(context);
-                              } else if (controller.text != 'dice' &&
-                                  controller2.text == '1234') {
-                                showSnackBar3(context);
-                              } else {
-                                showSnackBar(context);
-                              }
-                            },
-                            color: Colors.orangeAccent,
-                            child: Icon(
-                              Icons.arrow_forward,
-                              color: Colors.white,
-                              size: 35,
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         );
       }),
