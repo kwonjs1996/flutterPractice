@@ -1,92 +1,96 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(const MyApp());
-}
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'counter',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(title: 'Counter'),
+      debugShowCheckedModeBanner: false,
+      title: 'Dice game',
+      home: LogIn(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
-
-  final String title;
-
+class LogIn extends StatefulWidget {
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<LogIn> createState() => _LogInState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  void _decrementCounter() {
-    setState(() {
-      _counter--;
-    });
-  }
-
+class _LogInState extends State<LogIn> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          widget.title,
-        ),
+        title: Text('Log in'),
+        backgroundColor: Colors.redAccent,
         centerTitle: true,
+        leading: IconButton(icon: Icon(Icons.menu), onPressed: () {}),
+        actions: <Widget>[
+          IconButton(icon: Icon(Icons.search), onPressed: () {})
+        ],
       ),
-      body: Center(
+      //키보드가 바디영역을 침범 할 때 자동으로 스크롤을 해주는 역할
+      body: SingleChildScrollView(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
+          children: [
+            Padding(padding: EdgeInsets.only(top: 50)),
+            Center(
+              child: Image(
+                image: AssetImage('assets/chef.gif'),
+                width: 170,
+                height: 190,
+              ),
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
+            Form(
+              child: Theme(
+                data: ThemeData(
+                  primaryColor: Colors.teal,
+                  inputDecorationTheme: InputDecorationTheme(
+                    labelStyle: TextStyle(
+                      color: Colors.teal,
+                      fontSize: 15,
+                    ),
+                  ),
+                ),
+                child: Container(
+                  padding: EdgeInsets.all(40),
+                  child: Column(
+                    children: [
+                      TextField(
+                        decoration: InputDecoration(labelText: 'Enter "dice"'),
+                        keyboardType: TextInputType.emailAddress,
+                      ),
+                      TextField(
+                        decoration:
+                            InputDecoration(labelText: 'Enter Password'),
+                        keyboardType: TextInputType.text,
+                        obscureText: true,
+                      ),
+                      SizedBox(
+                        height: 40,
+                      ),
+                      ButtonTheme(
+                        minWidth: 100,
+                        height: 50,
+                        child: RaisedButton(
+                          onPressed: () {},
+                          color: Colors.orangeAccent,
+                          child: Icon(
+                            Icons.arrow_forward,
+                            color: Colors.white,
+                            size: 35,
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ),
             ),
           ],
         ),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Padding(
-            padding: const EdgeInsets.fromLTRB(8, 8, 8, 200),
-            child: FloatingActionButton(
-              onPressed: _incrementCounter,
-              tooltip: 'Increment',
-              child: const Icon(Icons.add),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(8, 8, 8, 200),
-            child: FloatingActionButton(
-              onPressed: _decrementCounter,
-              tooltip: 'Increment',
-              child: const Icon(Icons.remove),
-            ),
-          ),
-        ],
       ),
     );
   }
