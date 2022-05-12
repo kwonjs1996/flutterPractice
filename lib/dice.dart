@@ -60,7 +60,7 @@ class _DiceState extends State<Dice> {
                       rightDice = Random().nextInt(6) + 1;
                     },
                   );
-                  showToast("Left dice: {$leftDice}, Right dice: {$rightDice}");
+                  showToast("Left dice: $leftDice, Right dice: $rightDice");
                 },
               ),
             )
