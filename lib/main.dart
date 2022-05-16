@@ -21,43 +21,47 @@
 
 import 'dart:math';
 
-List<int> lottoNumber() {
-  var random = Random();
-  List<int> lottoList = [];
-  var num;
+Set<int> lottoNumber() {
+  final random = Random();
+  final Set<int> lottoSet = {};
+  //var num;
 
-  for (int i = 0; i < 6; i++) {
-    num = random.nextInt(45) + 1;
-    lottoList.add(num);
+  while (lottoSet.length != 6) {
+    //num = random.nextInt(45) + 1
+    lottoSet.add(random.nextInt(45) + 1);
   }
 
   print('당첨번호');
-  print(lottoList);
+  print(lottoSet.toList());
 
-  return lottoList;
+  return lottoSet;
 }
 
-List<int> myNumber() {
-  var random = Random();
-  List<int> myList = [];
-  var num;
+Set<int> myNumber() {
+  final random = Random();
+  final Set<int> myNumSet = {};
+  //var num;
 
-  for (int i = 0; i < 6; i++) {
-    num = random.nextInt(45) + 1;
-    myList.add(num);
+  while (myNumSet.length != 6) {
+    //num = random.nextInt(45) + 1
+    myNumSet.add(random.nextInt(45) + 1);
   }
-
   print('내 추첨번호');
-  print(myList);
+  print(myNumSet.toList());
 
-  return myList;
+  return myNumSet;
+
+  //print('내 추첨번호');
+  //print(myNumSet);
+
+  //return myNumSet;
 }
 
-void checkNumber(lottoList, myList) {
+void checkNumber(lottoSet, myNumSet) {
   int match = 0;
 
-  for (int lotto in lottoList) {
-    for (int myNum in myList) {
+  for (int lotto in lottoSet) {
+    for (int myNum in myNumSet) {
       if (lotto == myNum) {
         match++;
         print('당첨번호: $myNum');
@@ -70,8 +74,8 @@ void checkNumber(lottoList, myList) {
 }
 
 void main() {
-  List<int> lottoFinal = lottoNumber();
-  List<int> myFinal = myNumber();
+  Set<int> lottoFinal = lottoNumber();
+  Set<int> myFinal = myNumber();
 
   checkNumber(lottoFinal, myFinal);
 }
