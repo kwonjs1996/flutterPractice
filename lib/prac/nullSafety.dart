@@ -1,4 +1,4 @@
-import 'package:practice/nullSafety.dart';
+import 'package:practice/prac/nullSafety.dart';
 
 class Person {
   String? name;

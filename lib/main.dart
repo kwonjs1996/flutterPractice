@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'login_app/login.dart';
+import 'package:practice/screens/loading.dart';
 
 void main() {
   runApp(MyApp());
@@ -7,13 +7,14 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Login app',
-      theme: ThemeData(primarySwatch: Colors.grey),
-      home: LogIn(),
+      title: 'Weather app',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: Loading(),
     );
   }
 }
