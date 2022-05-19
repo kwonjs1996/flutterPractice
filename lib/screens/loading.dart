@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:practice/data/my_location.dart';
 import 'package:practice/data/network.dart';
 import 'package:practice/data/network.dart';
+import 'package:practice/screens/weather_screen.dart';
 
 const apikey = '0f7997b3185717b37edf95fcc83b3381';
 //API 일련의 표준화된 명령어나 기능, 매개 역할자로써의 API(은행창구의 직원으로 생각하면 좋다
@@ -35,10 +36,16 @@ class _LoadingState extends State<Loading> {
     print(longitude3);
 
     Network network = Network('https://api.openweathermap.org/data/2.5/weather?'
-        'lat=$latitude3&lon=$longitude3&appid=$apikey');
+        'lat=$latitude3&lon=$longitude3&appid=$apikey&units=metric');
+    //https://api.openweathermap.org/data/2.5/weather?lat=37.5674567&lon=126.8408683&appid=0f7997b3185717b37edf95fcc83b3381
 
     var weatherData = await network.getJsonData();
     print(weatherData);
+    Navigator.push(context, MaterialPageRoute(builder: (context) {
+      return WeatherScreen(
+        parseWeatherData: weatherData,
+      );
+    }));
   }
 
   // void fetchData() async {
