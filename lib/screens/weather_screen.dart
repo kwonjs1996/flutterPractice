@@ -29,24 +29,12 @@ class _WeatherScreenState extends State<WeatherScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                '$cityName',
-                style: TextStyle(fontSize: 30),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              Text(
-                '$temp도',
-                style: TextStyle(fontSize: 30),
-              ),
-            ],
-          ),
+      appBar: AppBar(
+        title: Text(''),
+      ),
+      body: Container(
+        child: Stack(
+          children: [],
         ),
       ),
     );
