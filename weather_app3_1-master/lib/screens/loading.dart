@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:weather_app3_1/data/my_location.dart';
 import 'package:weather_app3_1/data/network.dart';
 import 'package:weather_app3_1/screens/weather_screen.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 const apiKey = '0f7997b3185717b37edf95fcc83b3381';
 
@@ -11,8 +12,8 @@ class Loading extends StatefulWidget {
 }
 
 class _LoadingState extends State<Loading> {
-  double latitude3;
-  double longitude3;
+  double? latitude3;
+  double? longitude3;
 
   @override
   void initState() {
@@ -68,14 +69,11 @@ class _LoadingState extends State<Loading> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.amber[800],
       body: Center(
-        child: RaisedButton(
-          onPressed: null,
-          child: Text(
-            'Get my location',
-            style: TextStyle(color: Colors.white),
-          ),
-          color: Colors.blue,
+        child: SpinKitDoubleBounce(
+          color: Colors.white,
+          size: 80,
         ),
       ),
     );
